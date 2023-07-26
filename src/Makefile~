@@ -1,7 +1,7 @@
 # comments begin with #
 
 # for convenience, define variable $(OBJS) to list of object files
-OBJS= tokenizer.o main.o
+OBJS= tokenizer.o
 
 
 # make has a "default rule" specifying how to build a an "object" file (.o) from a C source file (.c)

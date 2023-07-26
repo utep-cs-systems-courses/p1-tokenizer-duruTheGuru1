@@ -1,0 +1,17 @@
+#include "tokenizer.h"
+#include <stdio.h>
+int main(){
+
+ 
+  char *lie = " a";
+  char *les = " ";
+  char *lrk = " hello guys";
+  char *dll = token_start(lrk);
+  int ha = space_char(*lie);
+  int haha = non_space_char(*lie);
+
+  printf("%s, \n", dll);
+  //to traverse a char, you use ++; to increment. Ex. str = "my_mom!" str++; "y_mom"
+  
+  return 0;
+}
