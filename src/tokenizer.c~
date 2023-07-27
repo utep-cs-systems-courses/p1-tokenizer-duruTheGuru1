@@ -6,7 +6,7 @@
    ('\t' or ' ').  
    Zero terminators are not printable (therefore false) */
 int space_char(char c){
-  if(c ==' ' || c == '\t'){
+  if(c ==' ' || c == '\t' && c != '\0'){
     return 1;
   }
   return 0;
@@ -27,24 +27,44 @@ int non_space_char(char c){
    str does not contain any tokens. */
 char *token_start(char *str)
 {
-  while(space_char(*str)&& *str != '\0'){
+  while(space_char(*str)){
+    if(non_space_char(*str))
+      {
+	return str;
+      }
     str++;
   }
-  return str;
+  return '\0';
 } 
 
 /* Returns a pointer terminator char following *token */
 char *token_terminator(char *token)
 {
-  while(non_space_char(*token)&& != '\0')
-    {
+  while(*token != '\0' && non_space_char(*token))
+    { 
       token++;
     }
   return token;
 }
 
 /* Counts the number of tokens in the string argument. */
-int count_tokens(char *str);
+int count_tokens(char *str)
+{
+  int count = 0;
+  char* currToken = token_start(str);
+  char* tokenTerm = str;
+  
+  //the while loop condition establishes that a token exists
+  //then the code inside the loop prepares the next token and counts
+  //for as long as theres not a null spot
+  
+  while(currToken = token_start(tokenTerm))
+    {
+      tokenTerm = token_terminator(currToken);      
+      count++;
+    }
+  return count;
+}
 
 /* Returns a fresly allocated new zero-terminated string 
    containing <len> chars from <inStr> */

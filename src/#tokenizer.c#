@@ -27,7 +27,7 @@ int non_space_char(char c){
    str does not contain any tokens. */
 char *token_start(char *str)
 {
-  while(space_char(*str)){
+  while(space_char(*str)&& *str != '\0'){
     if(non_space_char(*str))
       {
 	return str;
@@ -40,9 +40,9 @@ char *token_start(char *str)
 /* Returns a pointer terminator char following *token */
 char *token_terminator(char *token)
 {
-  while(*token != '\0' && non_space_char(*token))
-    { 
-      token++;
+  while(non_space_char(*token)&& *token != '\0')
+    {
+     if
     }
   return token;
 }
@@ -51,7 +51,7 @@ char *token_terminator(char *token)
 int count_tokens(char *str)
 {
   int count = 0;
-  char* currToken;
+  char* currToken = token_start(str);
   char* tokenTerm = str;
   
   //the while loop condition establishes that a token exists
