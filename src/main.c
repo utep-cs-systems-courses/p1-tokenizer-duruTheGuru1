@@ -13,10 +13,10 @@ int main(){
   int ha = space_char(*lie);
   printf("test four\n");
   int haha = non_space_char(*lie);
-  // int tts = count_tokens(lrk);
+  int tts = count_tokens(lrk);
    printf("%s, \n", dll);
    printf("%s\n", sf2);
-   // printf("%d\n", tts);
+   printf("%d\n", tts);
   
   //to traverse a char, you use ++; to increment. Ex. str = "my_mom!" str++; "y_mom"
   

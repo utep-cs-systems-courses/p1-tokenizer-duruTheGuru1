@@ -6,20 +6,22 @@
    ('\t' or ' ').  
    Zero terminators are not printable (therefore false) */
 int space_char(char c){
-  if(c ==' ' || c == '\t' && c != '\0'){
+  if(c ==' ' || c == '\t'){
     return 1;
   }
-  return 0;
+  else
+    return 0;
 }
 
 /* Return true (non-zero) if c is a non-whitespace 
    character (not tab or space).  
    Zero terminators are not printable (therefore false) */ 
 int non_space_char(char c){
-  if(space_char(c)== 1){
+  if(space_char(c) || c== '\0'){
     return 0;
   }
   return 1;
+  
 }
 
 /* Returns a pointer to the first character of the next 
@@ -28,13 +30,15 @@ int non_space_char(char c){
 char *token_start(char *str)
 {
   while(space_char(*str)){
-    if(non_space_char(*str))
-      {
-	return str;
-      }
-    str++;
+	str++;
   }
-  return '\0';
+  /*in the case that you reach an end terminator, you return 0 so you have something
+  but not a token */
+  if(*str == '\0')
+    return 0;
+  
+  else
+    return str;
 } 
 
 /* Returns a pointer terminator char following *token */
@@ -51,17 +55,22 @@ char *token_terminator(char *token)
 int count_tokens(char *str)
 {
   int count = 0;
-  char* currToken;
-  char* tokenTerm = str;
+  str = token_start(str);
+  count++;
   
   //the while loop condition establishes that a token exists
   //then the code inside the loop prepares the next token and counts
   //for as long as theres not a null spot
   
-  while(currToken = token_start(tokenTerm))
+  while(*str != '\0')
     {
-      tokenTerm = token_terminator(currToken);      
-      count++;
+      if(non_space_char(*str)){
+	str++;
+      }
+      else{
+	str = token_start(str);
+	count++;
+      }
     }
   return count;
 }
