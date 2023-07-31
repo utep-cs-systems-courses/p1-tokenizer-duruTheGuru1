@@ -21,6 +21,7 @@ int non_space_char(char c){
     return 0;
   }
   return 1;
+  
 }
 
 /* Returns a pointer to the first character of the next 

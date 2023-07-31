@@ -35,8 +35,7 @@ char *token_start(char *str)
   /*in the case that you reach an end terminator, you return 0 so you have something
   but not a token */
   if(*str == '\0')
-    return 0;
-  
+    return 0;  
   else
     return str;
 } 
