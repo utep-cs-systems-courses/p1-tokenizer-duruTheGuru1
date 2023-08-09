@@ -76,7 +76,18 @@ int count_tokens(char *str)
 
 /* Returns a fresly allocated new zero-terminated string 
    containing <len> chars from <inStr> */
-char *copy_str(char *inStr, short len);
+char *copy_str(char *inStr, short len){
+  char *cStr = malloc((len + 1) * sizeof(char));
+  for(int i = 0; i < len; i++)
+    {
+      *cStr = *inStr;
+      cStr++;
+      inStr++;
+    }
+
+  *cStr = '\0';
+  return cStr;
+}
 
 /* Returns a freshly allocated zero-terminated vector of freshly allocated 
    space-separated tokens from zero-terminated str.
@@ -86,6 +97,7 @@ char *copy_str(char *inStr, short len);
      tokens[1] = "world"
      tokens[2] = "string" 
      tokens[3] = 0
+
 */
 char **tokenize(char* str);
 
